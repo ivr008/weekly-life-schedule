@@ -4,350 +4,352 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Weekly Life Schedule</title>
+  <meta name="description" content="A weekly life schedule that protects school, activities, sleep, curiosity, and real life." />
+  <meta property="og:title" content="My Weekly Life Schedule" />
+  <meta property="og:description" content="Structure that protects school, activities, sleep, curiosity, and real life." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%97%93%EF%B8%8F%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #ffffff;
-      --card: #ebf1fa;
-      --card-soft: #f5f7fa;
-      --text: #253761;
-      --text-soft: #405e8d;
+      --navy: #253761;
+      --navy-soft: #405e8d;
       --accent: #4f71be;
-      --accent-strong: #3a5aa0;
-      --border: #dce6f4;
+      --band: #ebf1fa;
+      --band-soft: #f5f7fa;
+      --ink: #1f2a44;
     }
 
     * { box-sizing: border-box; }
 
+    html { -webkit-text-size-adjust: 100%; }
+
     body {
       margin: 0;
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
+      background: #ffffff;
+      color: var(--ink);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .page {
-      max-width: 1180px;
+    .wrap {
+      max-width: 1160px;
       margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
+      padding: 2.75rem 1.75rem 4rem;
     }
 
     /* ---------- Header ---------- */
-    header { margin-bottom: 1.5rem; }
+    .masthead { text-align: center; margin-bottom: 1.5rem; }
 
-    header h1 {
-      font-size: clamp(1.9rem, 4vw, 3rem);
+    .masthead h1 {
+      margin: 0 0 0.35rem;
+      font-size: clamp(1.75rem, 3.6vw, 2.85rem);
       font-weight: 800;
       letter-spacing: 0.02em;
-      margin: 0 0 0.35rem;
-      color: var(--text);
       text-transform: uppercase;
+      color: var(--navy);
     }
 
-    header .subtitle {
-      font-size: 1.05rem;
-      color: var(--text-soft);
+    .masthead .subtitle {
       margin: 0;
+      font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+      color: var(--navy-soft);
+      font-weight: 400;
     }
 
-    .rule-banner {
-      display: flex;
-      gap: 0.75rem;
-      align-items: baseline;
-      background: var(--card);
-      border-left: 4px solid var(--accent);
-      border-radius: 0.6rem;
-      padding: 0.85rem 1.1rem;
-      margin-bottom: 1.75rem;
+    .rule {
+      text-align: center;
+      margin: 1.1rem 0 2rem;
+      font-size: clamp(0.9rem, 1.4vw, 1.02rem);
+      color: var(--navy);
     }
-    .rule-banner .label {
-      font-weight: 800;
+    .rule .label {
       color: var(--accent);
-      white-space: nowrap;
+      font-weight: 800;
       letter-spacing: 0.04em;
-      font-size: 0.95rem;
+      text-transform: uppercase;
+      margin-right: 0.35rem;
     }
-    .rule-banner .text { color: var(--text); font-weight: 500; }
 
     /* ---------- Section headings ---------- */
-    .section-heading {
+    .section {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      margin: 2.25rem 0 1.1rem;
+      margin: 2.4rem 0 0.9rem;
     }
-    .section-heading h2 {
+    .section h2 {
       margin: 0;
-      font-size: 1.35rem;
+      font-size: clamp(1.05rem, 1.7vw, 1.25rem);
       font-weight: 800;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--text);
+      color: var(--navy-soft);
     }
-    .section-heading .tag {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--accent);
-      background: var(--card);
-      border-radius: 999px;
-      padding: 0.25rem 0.7rem;
-      letter-spacing: 0.05em;
+    .section::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, #dbe3f2, rgba(219, 227, 242, 0));
     }
 
-    /* ---------- Weekday grid ---------- */
-    .week-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0.9rem;
-    }
+    /* ---------- Zebra table ---------- */
+    .scroll { overflow-x: auto; border-radius: 0.5rem; }
 
-    .day-col {
-      background: var(--card);
-      border-radius: 0.85rem;
-      padding: 0.9rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
+    .sched {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      min-width: 720px;
     }
+    .sched.two { min-width: 560px; }
 
-    .day-col header {
+    .sched th {
+      padding: 0.55rem 0.9rem 0.7rem;
       text-align: center;
-      margin-bottom: 0.15rem;
-    }
-    .day-col .day {
-      font-size: 1rem;
+      vertical-align: bottom;
+      font-size: 0.95rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      color: var(--text);
+      color: var(--navy);
+      border-bottom: 2px solid var(--band);
     }
-    .day-col .activity {
-      font-size: 0.82rem;
+    .sched th .act {
+      display: block;
+      margin-top: 0.25rem;
+      font-size: 0.76rem;
       font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: none;
       color: var(--accent);
-      margin-top: 0.1rem;
     }
 
-    .block {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 0.6rem;
-      padding: 0.6rem 0.7rem;
+    .sched td {
+      padding: 0.85rem 0.95rem;
+      vertical-align: top;
+      font-size: 0.88rem;
+      color: var(--ink);
+      line-height: 1.4;
     }
-    .block .time {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.2rem;
-    }
-    .block .detail {
-      font-size: 0.84rem;
-      color: var(--text);
-      font-weight: 500;
-    }
+    .sched tbody tr:nth-child(odd) td { background: var(--band); }
+    .sched tbody tr:nth-child(even) td { background: #ffffff; }
 
-    .block.goal {
-      background: var(--card-soft);
-      border-color: var(--accent);
-    }
-    .block.goal .detail { color: var(--accent-strong); font-weight: 600; }
-
-    /* ---------- Evening routine ---------- */
-    .evening {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.9rem;
-    }
-    .evening .slot {
-      background: var(--card);
-      border-radius: 0.85rem;
-      padding: 0.9rem 1rem;
-      text-align: center;
-    }
-    .evening .slot .time {
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: var(--accent);
+    .time {
+      display: block;
       margin-bottom: 0.3rem;
-      letter-spacing: 0.03em;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
     }
-    .evening .slot .detail { font-size: 0.86rem; font-weight: 500; color: var(--text); }
+    .goal .time { color: #b3541e; }
+    .goal { font-weight: 600; }
+
+    /* ---------- Evening strip ---------- */
+    .evening {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      min-width: 620px;
+    }
+    .evening th {
+      padding: 0.45rem 0.9rem;
+      text-align: left;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 2px solid var(--band);
+    }
+    .evening td {
+      padding: 0.8rem 0.9rem 1rem;
+      vertical-align: top;
+      font-size: 0.88rem;
+      line-height: 1.4;
+      background: var(--band-soft);
+      color: var(--ink);
+    }
 
     /* ---------- Note ---------- */
     .note {
-      background: var(--card-soft);
-      border: 1px solid var(--border);
-      border-radius: 0.6rem;
-      padding: 0.8rem 1.1rem;
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--text-soft);
-      margin-top: 1.4rem;
+      margin-top: 1.35rem;
+      padding: 0.85rem 1.1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: 0.35rem;
+      background: var(--band-soft);
+      color: var(--navy);
+      font-size: 0.94rem;
     }
-    .note strong { color: var(--accent-strong); }
+    .note strong { color: var(--accent); font-weight: 800; }
 
-    /* ---------- Weekend ---------- */
-    .weekend {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.9rem;
+    /* ---------- Print button ---------- */
+    .print-btn {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 10;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(79, 113, 190, 0.35);
+      transition: background 0.15s, transform 0.15s;
     }
-    .weekend .day-col { padding: 1.1rem 1.2rem; }
-    .weekend .day { font-size: 1.05rem; text-align: left; }
+    .print-btn:hover { background: #3f5ea6; transform: translateY(-1px); }
 
-    /* ---------- Responsive ---------- */
-    @media (max-width: 980px) {
-      .week-grid { grid-template-columns: repeat(2, 1fr); }
-      .evening { grid-template-columns: repeat(2, 1fr); }
-      .weekend { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 560px) {
-      .week-grid { grid-template-columns: 1fr; }
-      .evening { grid-template-columns: 1fr; }
-      .rule-banner { flex-direction: column; gap: 0.2rem; }
-    }
-
-    /* ---------- Print ---------- */
     @media print {
-      body { background: #fff; }
-      .page { max-width: 100%; padding: 0.5in; }
-      .day-col, .evening .slot { break-inside: avoid; }
+      .wrap { max-width: 100%; padding: 0.35in; }
+      .print-btn { display: none; }
+      .section { margin-top: 1.5rem; }
+      .sched, .sched.two, .evening { min-width: 0 !important; }
+      .sched { font-size: 11px; }
+      .sched tbody tr, .sched th, .evening tr { break-inside: avoid; }
+      body { color: #000; }
+      @page { margin: 0.5in; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
+  <div class="wrap">
+    <header class="masthead">
       <h1>My Weekly Life Schedule</h1>
       <p class="subtitle">Structure that protects school, activities, sleep, curiosity, and real life.</p>
     </header>
 
-    <div class="rule-banner">
-      <span class="label">Default rule</span>
-      <span class="text">Begin the first homework block within 30 minutes of getting home.</span>
+    <p class="rule">
+      <span class="label">Default rule:</span>Begin the first homework block within 30 minutes of getting home.
+    </p>
+
+    <!-- ============ WEEKDAYS ============ -->
+    <div class="section"><h2>Weekdays</h2></div>
+
+    <div class="scroll">
+      <table class="sched">
+        <thead>
+          <tr>
+            <th>Monday<span class="act">Piano 4:30–5:00</span></th>
+            <th>Tuesday<span class="act">Swimming 4:30–5:30</span></th>
+            <th>Wednesday<span class="act">Math tutoring 4:00–5:00</span></th>
+            <th>Thursday<span class="act">Swimming 4:30–5:30</span></th>
+            <th>Friday<span class="act">Work + recovery</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="time">Arrive home +30 min</span>Snack, change, decompress, set a timer</td>
+            <td><span class="time">Arrive home +30 min</span>Snack, change, decompress, set a timer</td>
+            <td><span class="time">Before tutoring</span>Snack + collect math questions / materials</td>
+            <td><span class="time">Arrive home +30 min</span>Snack, change, decompress, set a timer</td>
+            <td><span class="time">3:30–4:30</span>Focused homework block: finish urgent work and start Monday tasks</td>
+          </tr>
+          <tr>
+            <td><span class="time">Before 4:20</span>Quick homework block = easiest urgent task</td>
+            <td><span class="time">Before 4:20</span>Pack for swimming + one short task</td>
+            <td><span class="time">4:00–5:00</span>Math tutoring</td>
+            <td><span class="time">Before 4:20</span>Pack for swimming + check Friday deadlines</td>
+            <td><span class="time">4:30 onward</span>Downtime / free time</td>
+          </tr>
+          <tr>
+            <td><span class="time">4:30–5:00</span>Piano class</td>
+            <td><span class="time">4:30–5:30</span>Swimming</td>
+            <td><span class="time">5:15–6:30</span>Main homework block, practice tutoring material</td>
+            <td><span class="time">4:30–5:30</span>Swimming</td>
+            <td><span class="time">Evening</span>Downtime / free time</td>
+          </tr>
+          <tr>
+            <td><span class="time">5:15–6:30</span>Main homework / IB task block</td>
+            <td><span class="time">6:00–7:15</span>Main homework / IB task block</td>
+            <td><span class="time">6:30–7:00</span>Dinner / real break</td>
+            <td><span class="time">6:00–7:15</span>Main homework / IB task block</td>
+            <td><span class="time">Before bed</span>Five-minute room reset</td>
+          </tr>
+          <tr>
+            <td><span class="time">6:30 onward</span>Dinner, finish small tasks, free time</td>
+            <td><span class="time">7:15 onward</span>Dinner, lighter work, free time</td>
+            <td><span class="time">7:00 onward</span>Small tasks, preparation, free time</td>
+            <td><span class="time">7:15 onward</span>Dinner, lighter work, free time</td>
+            <td class="goal"><span class="time">Goal</span>Enjoy Friday without creating a Sunday emergency</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <!-- Weekdays -->
-    <div class="section-heading">
-      <h2>Weekdays</h2>
-      <span class="tag">Mon – Fri</span>
+    <!-- ============ EVERY WEEKDAY EVENING ============ -->
+    <div class="section"><h2>Every Weekday Evening</h2></div>
+
+    <div class="scroll">
+      <table class="evening">
+        <thead>
+          <tr>
+            <th>8:30–9:45</th>
+            <th>9:45</th>
+            <th>10:15</th>
+            <th>11:00</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Free time / finish essentials</td>
+            <td>Prepare bag, clothes, and tomorrow's first task</td>
+            <td>Curiosity shutdown: save questions; start nothing new</td>
+            <td>Lights out target</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="week-grid">
-      <!-- Monday -->
-      <div class="day-col">
-        <header>
-          <div class="day">Monday</div>
-          <div class="activity">Piano 4:30–5:00</div>
-        </header>
-        <div class="block"><div class="time">Arrive home +30 min</div><div class="detail">Snack, change, decompress, set a timer</div></div>
-        <div class="block"><div class="time">Before 4:20</div><div class="detail">Quick homework block = easiest urgent task</div></div>
-        <div class="block"><div class="time">4:30–5:00</div><div class="detail">Piano class</div></div>
-        <div class="block"><div class="time">5:15–6:30</div><div class="detail">Main homework / IB task block</div></div>
-        <div class="block"><div class="time">6:30 onward</div><div class="detail">Dinner, finish small tasks, free time</div></div>
-      </div>
-
-      <!-- Tuesday -->
-      <div class="day-col">
-        <header>
-          <div class="day">Tuesday</div>
-          <div class="activity">Swimming 4:30–5:30</div>
-        </header>
-        <div class="block"><div class="time">Arrive home +30 min</div><div class="detail">Snack, change, decompress, set a timer</div></div>
-        <div class="block"><div class="time">Before 4:20</div><div class="detail">Pack for swimming + one short task</div></div>
-        <div class="block"><div class="time">4:30–5:30</div><div class="detail">Swimming</div></div>
-        <div class="block"><div class="time">6:00–7:15</div><div class="detail">Main homework / IB task block</div></div>
-        <div class="block"><div class="time">7:15 onward</div><div class="detail">Dinner, lighter work, free time</div></div>
-      </div>
-
-      <!-- Wednesday -->
-      <div class="day-col">
-        <header>
-          <div class="day">Wednesday</div>
-          <div class="activity">Math tutoring 4:00–5:00</div>
-        </header>
-        <div class="block"><div class="time">Before tutoring</div><div class="detail">Snack + collect math questions / materials</div></div>
-        <div class="block"><div class="time">4:00–5:00</div><div class="detail">Math tutoring</div></div>
-        <div class="block"><div class="time">5:15–6:30</div><div class="detail">Main homework block, practice tutoring material</div></div>
-        <div class="block"><div class="time">6:30–7:00</div><div class="detail">Dinner / real break</div></div>
-        <div class="block"><div class="time">7:00 onward</div><div class="detail">Small tasks, preparation, free time</div></div>
-      </div>
-
-      <!-- Thursday -->
-      <div class="day-col">
-        <header>
-          <div class="day">Thursday</div>
-          <div class="activity">Swimming 4:30–5:30</div>
-        </header>
-        <div class="block"><div class="time">Arrive home +30 min</div><div class="detail">Snack, change, decompress, set a timer</div></div>
-        <div class="block"><div class="time">Before 4:20</div><div class="detail">Pack for swimming + check Friday deadlines</div></div>
-        <div class="block"><div class="time">4:30–5:30</div><div class="detail">Swimming</div></div>
-        <div class="block"><div class="time">6:00–7:15</div><div class="detail">Main homework / IB task block</div></div>
-        <div class="block"><div class="time">7:15 onward</div><div class="detail">Dinner, lighter work, free time</div></div>
-      </div>
-
-      <!-- Friday -->
-      <div class="day-col">
-        <header>
-          <div class="day">Friday</div>
-          <div class="activity">Work + recovery</div>
-        </header>
-        <div class="block"><div class="time">3:30–4:30</div><div class="detail">Focused homework block: finish urgent work and start Monday tasks</div></div>
-        <div class="block"><div class="time">4:30 onward</div><div class="detail">Downtime / free time</div></div>
-        <div class="block"><div class="time">Evening</div><div class="detail">Downtime / free time</div></div>
-        <div class="block"><div class="time">Before bed</div><div class="detail">Five-minute room reset</div></div>
-        <div class="block goal"><div class="time">Goal</div><div class="detail">Enjoy Friday without creating a Sunday emergency</div></div>
-      </div>
-    </div>
-
-    <!-- Evening routine -->
-    <div class="section-heading">
-      <h2>Every Weekday Evening</h2>
-      <span class="tag">Wind-down</span>
-    </div>
-
-    <div class="evening">
-      <div class="slot"><div class="time">8:30–9:45</div><div class="detail">Free time / finish essentials</div></div>
-      <div class="slot"><div class="time">9:45</div><div class="detail">Prepare bag, clothes, and tomorrow's first task</div></div>
-      <div class="slot"><div class="time">10:15</div><div class="detail">Curiosity shutdown — save questions — start nothing new</div></div>
-      <div class="slot"><div class="time">11:00</div><div class="detail">Lights out target</div></div>
-    </div>
-
-    <div class="note">
+    <p class="note">
       <strong>If you miss a start time:</strong> do the 10-minute minimum immediately. A late start is better than abandoning the day.
-    </div>
+    </p>
 
-    <!-- Weekend -->
-    <div class="section-heading">
-      <h2>Saturday + Sunday</h2>
-      <span class="tag">Weekend</span>
-    </div>
+    <!-- ============ SATURDAY + SUNDAY ============ -->
+    <div class="section"><h2>Saturday + Sunday</h2></div>
 
-    <div class="weekend">
-      <div class="day-col">
-        <header><div class="day">Saturday</div></header>
-        <div class="block"><div class="time">Morning</div><div class="detail">Wake within your normal window; breakfast and get ready.</div></div>
-        <div class="block"><div class="time">10:00–11:30</div><div class="detail">Morning focus block: complete the week's largest or most difficult task.</div></div>
-        <div class="block"><div class="time">Afternoon</div><div class="detail">Real-world activity, errands, plans, or downtime / free time.</div></div>
-        <div class="block"><div class="time">Evening</div><div class="detail">Downtime / free time without guilt.</div></div>
-        <div class="block"><div class="time">Wind down</div><div class="detail">Begin winding down, write unfinished curiosities on the Later List.</div></div>
-      </div>
-
-      <div class="day-col">
-        <header><div class="day">Sunday</div></header>
-        <div class="block"><div class="time">Morning</div><div class="detail">Breakfast, room reset, and check the week thread.</div></div>
-        <div class="block"><div class="time">10:00–11:30</div><div class="detail">Morning focus block: finish remaining work and prepare for Monday.</div></div>
-        <div class="block"><div class="time">Afternoon</div><div class="detail">Movement or real-world time — then complete remaining homework.</div></div>
-        <div class="block"><div class="time">6:00–7:00</div><div class="detail">Pack bag, choose clothes, charge devices, review Monday.</div></div>
-        <div class="block"><div class="time">10:15 / 11:00</div><div class="detail">Curiosity shutdown / lights out target.</div></div>
-      </div>
+    <div class="scroll">
+      <table class="sched two">
+        <thead>
+          <tr>
+            <th>Saturday</th>
+            <th>Sunday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="time">Morning</span>Wake within your normal window; breakfast and get ready.</td>
+            <td><span class="time">Morning</span>Breakfast, room reset, and check the week ahead.</td>
+          </tr>
+          <tr>
+            <td><span class="time">10:00–11:30</span>Morning focus block: complete the week's largest or most difficult task.</td>
+            <td><span class="time">10:00–11:30</span>Morning focus block: finish remaining work and prepare for Monday.</td>
+          </tr>
+          <tr>
+            <td><span class="time">Afternoon</span>Real-world activity, errands, plans, or downtime / free time.</td>
+            <td><span class="time">Afternoon</span>Movement or real-world time; then complete remaining homework.</td>
+          </tr>
+          <tr>
+            <td><span class="time">Evening</span>Downtime / free time without guilt.</td>
+            <td><span class="time">6:00–7:00</span>Pack bag, choose clothes, charge devices, review Monday.</td>
+          </tr>
+          <tr>
+            <td><span class="time">10:30</span>Begin winding down; write unfinished curiosities on the Later List.</td>
+            <td><span class="time">10:15 / 11:00</span>Curiosity shutdown / lights out target.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+
+  <button class="print-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
 </body>
 </html>
